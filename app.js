@@ -181,8 +181,9 @@ const observer = new IntersectionObserver((entries) => {
       const idx = pages.indexOf(entry.target);
       if (idx !== -1) {
         pages.forEach((p, i) => p.classList.toggle('is-active', i === idx));
-        navLinks.forEach((l, i) => l.classList.toggle('active', i === idx));
-        drawerLinks.forEach((l, i) => l.classList.toggle('active', i === idx));
+        // navLinks[0] = Услуги (section 1), etc. Hero (idx=0) clears all.
+        navLinks.forEach((l, i) => l.classList.toggle('active', i === idx - 1));
+        drawerLinks.forEach((l, i) => l.classList.toggle('active', i === idx - 1));
         if (idx !== lastIdx) { lastIdx = idx; runCounters(idx); }
       }
     }
