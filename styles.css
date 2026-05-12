@@ -326,12 +326,10 @@ a:hover { color: var(--gold-light); }
 
 .gradient-text {
   display: inline-block;
-  background: linear-gradient(135deg, var(--gold), var(--rose), var(--teal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #0ABAB5;
+  -webkit-text-fill-color: #0ABAB5;
   -webkit-text-stroke: 0;
-  /* Outside-only outline via 8-direction shadow (never eats into fill) */
+  /* Outside-only black outline via 8-direction shadow */
   text-shadow:
     -3px -3px 0 #000,
      3px -3px 0 #000,
@@ -340,7 +338,7 @@ a:hover { color: var(--gold-light); }
      0   -3px 0 #000,
      0    3px 0 #000,
     -3px  0   0 #000,
-     3px  0   0 #000 !important;
+     3px  0   0 #000;
 }
 
 .hero-desc {
