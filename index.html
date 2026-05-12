@@ -12,296 +12,322 @@
 </head>
 <body>
 
+  <!-- ========= CINEMATIC CANVAS BACKGROUND ========= -->
+  <canvas id="gl-canvas"></canvas>
+
+  <!-- ========= LOADER ========= -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-brand">✦ Europa Clinic</div>
+      <div class="loader-bar-track">
+        <div class="loader-bar-fill" id="loaderBar"></div>
+      </div>
+      <div class="loader-info">
+        <span id="loaderPct">0</span>%
+      </div>
+      <div class="loader-caption" id="loaderCaption">Подготавливаем кинематографический опыт…</div>
+    </div>
+  </div>
+
+  <!-- ========= PROGRESS BAR (thin, bottom) ========= -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
   <!-- ========= NAVBAR ========= -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="#hero" class="nav-brand">
+      <a href="#hero" class="nav-brand" id="navBrand">
         <span class="brand-icon">✦</span>
         <span class="brand-text">Europa Clinic</span>
       </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#services" data-scroll="1">Услуги</a>
-        <a href="#tech" data-scroll="2">Технологии</a>
-        <a href="#results" data-scroll="3">Результаты</a>
-        <a href="#promo" data-scroll="4">Акции</a>
-        <a href="#contact" data-scroll="5">Контакты</a>
+      <div class="nav-links" id="navLinksDesktop">
+        <a href="#services" class="nav-link" data-scroll="1">Услуги</a>
+        <a href="#tech" class="nav-link" data-scroll="2">Технологии</a>
+        <a href="#results" class="nav-link" data-scroll="3">Результаты</a>
+        <a href="#promo" class="nav-link" data-scroll="4">Акции</a>
+        <a href="#contact" class="nav-link" data-scroll="5">Контакты</a>
       </div>
       <a href="tel:+79011478213" class="nav-cta">+7 (901) 147-82-13</a>
-      <button class="burger" id="burger" aria-label="Меню">
+      <button class="burger" id="navMenuBtn" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- ========= MOBILE DRAWER ========= -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#services" data-scroll="1">Услуги</a>
-    <a href="#tech" data-scroll="2">Технологии</a>
-    <a href="#results" data-scroll="3">Результаты</a>
-    <a href="#promo" data-scroll="4">Акции</a>
-    <a href="#contact" data-scroll="5">Контакты</a>
+  <!-- ========= MOBILE SCRIM + DRAWER ========= -->
+  <div class="nav-scrim" id="navScrim" hidden></div>
+  <div class="nav-drawer" id="navDrawer" hidden>
+    <button class="drawer-close" id="navDrawerClose">✕</button>
+    <a href="#services" class="nav-drawer-link" data-scroll="1">Услуги</a>
+    <a href="#tech" class="nav-drawer-link" data-scroll="2">Технологии</a>
+    <a href="#results" class="nav-drawer-link" data-scroll="3">Результаты</a>
+    <a href="#promo" class="nav-drawer-link" data-scroll="4">Акции</a>
+    <a href="#contact" class="nav-drawer-link" data-scroll="5">Контакты</a>
     <a href="tel:+79011478213" class="drawer-phone">📞 +7 (901) 147-82-13</a>
   </div>
 
-  <!-- ========= HERO ========= -->
-  <section class="page" id="hero" data-index="0">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="page-inner hero-inner">
-      <div class="hero-badge reveal">Косметология • Эстетическая медицина • Пятигорск</div>
-      <h1 class="hero-title reveal">
-        Европейская<br>
-        <span class="gradient-text">Косметологическая Клиника</span>
-      </h1>
-      <p class="hero-desc reveal">
-        Сертифицированные специалисты, передовое европейское оборудование и индивидуальный подход к каждому пациенту — в самом центре Пятигорска.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#contact" class="btn btn-primary">Записаться на приём</a>
-        <a href="#services" class="btn btn-outline">Наши услуги</a>
-      </div>
-      <div class="hero-stats reveal">
-        <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Лет опыта</span></div>
-        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Видов процедур</span></div>
-        <div class="stat"><span class="stat-num">10 000+</span><span class="stat-label">Довольных клиентов</span></div>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
+  <!-- ========= UI LAYER (relative, not fixed — iOS Safari safe) ========= -->
+  <div id="ui-layer">
+    <div class="stage">
 
-  <!-- ========= SERVICES ========= -->
-  <section class="page" id="services" data-index="1">
-    <div class="page-inner">
-      <div class="badge reveal">Что мы предлагаем</div>
-      <h2 class="section-title reveal">Полный спектр<br><span class="gradient-text">косметологических услуг</span></h2>
-      <p class="section-desc reveal">От аппаратной косметологии до инъекционных методов — всё для вашей красоты и здоровья.</p>
-
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="card-icon">💎</div>
-          <h3>Аппаратная косметология</h3>
-          <p>SMAS-лифтинг, RF-лифтинг INDIBA, микроигольчатый RF, фотоомоложение и лазерное омоложение RecoSMA.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="card-icon">💉</div>
-          <h3>Инъекционные методы</h3>
-          <p>Ботулотоксин, контурная пластика, биоревитализация, плазмолифтинг, мезотерапия и PRP-терапия.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="card-icon">✨</div>
-          <h3>Лазер LinLine</h3>
-          <p>Лазерное омоложение, наноперфорация, карбоновый пилинг, удаление рубцов и пигментации.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="card-icon">🧖‍♀️</div>
-          <h3>SPA и массажи</h3>
-          <p>Структурный массаж лица, LPG-массаж тела, программы сезонного ухода Sothys.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="card-icon">🔬</div>
-          <h3>Лаборатория и диагностика</h3>
-          <p>Генетическое тестирование MyExpert, дерматоскопия, «Паспорт красоты», УЗ-диагностика.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="card-icon">⚡</div>
-          <h3>Эпиляция</h3>
-          <p>Александритовая лазерная эпиляция, фотоэпиляция и биоэпиляция — для женщин и мужчин.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========= TECHNOLOGY ========= -->
-  <section class="page" id="tech" data-index="2">
-    <div class="page-inner">
-      <div class="badge reveal">Оборудование</div>
-      <h2 class="section-title reveal">Технологии,<br><span class="gradient-text">которым доверяют</span></h2>
-      <p class="section-desc reveal">Мы используем только сертифицированное европейское оборудование с доказанной эффективностью.</p>
-
-      <div class="tech-showcase">
-        <div class="tech-item reveal">
-          <div class="tech-ring">
-            <span>INDIBA</span>
+      <!-- ========= HERO ========= -->
+      <section class="page" data-index="0" id="hero">
+        <div class="page-inner hero-inner">
+          <div class="hero-badge reveal-3d">Косметология • Эстетическая медицина • Пятигорск</div>
+          <h1 class="hero-title gsap-title reveal-3d">
+            Европейская<br>
+            <span class="gradient-text">Косметологическая Клиника</span>
+          </h1>
+          <p class="hero-desc reveal-3d">
+            Сертифицированные специалисты, передовое европейское оборудование и индивидуальный подход к каждому пациенту — в самом центре Пятигорска.
+          </p>
+          <div class="hero-actions reveal-3d">
+            <a href="#contact" class="btn btn-primary" data-scroll="5">Записаться на приём</a>
+            <a href="#services" class="btn btn-outline" data-scroll="1">Наши услуги</a>
           </div>
-          <h4>RF-лифтинг INDIBA</h4>
-          <p>Радиочастотное омоложение из Испании — безоперационный лифтинг для лица и тела</p>
-        </div>
-        <div class="tech-item reveal">
-          <div class="tech-ring">
-            <span>LinLine</span>
+          <div class="hero-stats reveal-3d">
+            <div class="stat"><span class="stat-num counter" data-target="15">0</span><span class="stat-plus">+</span><span class="stat-label">Лет опыта</span></div>
+            <div class="stat"><span class="stat-num counter" data-target="50">0</span><span class="stat-plus">+</span><span class="stat-label">Видов процедур</span></div>
+            <div class="stat"><span class="stat-num counter" data-target="10000">0</span><span class="stat-plus">+</span><span class="stat-label">Довольных клиентов</span></div>
           </div>
-          <h4>Лазер LinLine</h4>
-          <p>Многозадачная лазерная платформа: омоложение, наноперфорация, карбоновый пилинг</p>
         </div>
-        <div class="tech-item reveal">
-          <div class="tech-ring">
-            <span>SMAS</span>
-          </div>
-          <h4>SMAS-лифтинг</h4>
-          <p>Ультразвуковой лифтинг глубоких слоёв кожи без хирургического вмешательства</p>
-        </div>
-        <div class="tech-item reveal">
-          <div class="tech-ring">
-            <span>Jet&nbsp;Peel</span>
-          </div>
-          <h4>Газожидкостный пилинг</h4>
-          <p>Безинъекционная мезотерапия и глубокое очищение кожи</p>
-        </div>
-      </div>
+      </section>
 
-      <div class="tech-features">
-        <div class="tf reveal"><span class="tf-icon">🏥</span><span>Медицинская лицензия</span></div>
-        <div class="tf reveal"><span class="tf-icon">🇪🇺</span><span>Европейское оборудование</span></div>
-        <div class="tf reveal"><span class="tf-icon">👩‍⚕️</span><span>Сертифицированные врачи</span></div>
-        <div class="tf reveal"><span class="tf-icon">🔒</span><span>Безопасность и стерильность</span></div>
-      </div>
-    </div>
-  </section>
+      <!-- ========= SERVICES ========= -->
+      <section class="page" data-index="1" id="services">
+        <div class="page-inner">
+          <div class="badge reveal-3d">Что мы предлагаем</div>
+          <h2 class="section-title reveal-3d">Полный спектр<br><span class="gradient-text">косметологических услуг</span></h2>
+          <p class="section-desc reveal-3d">От аппаратной косметологии до инъекционных методов — всё для вашей красоты и здоровья.</p>
 
-  <!-- ========= RESULTS ========= -->
-  <section class="page" id="results" data-index="3">
-    <div class="page-inner">
-      <div class="badge reveal">Доверие клиентов</div>
-      <h2 class="section-title reveal">Результаты,<br><span class="gradient-text">которые говорят сами</span></h2>
-      <p class="section-desc reveal">Каждая процедура — это инвестиция в вашу красоту с измеримым результатом.</p>
-
-      <div class="results-grid">
-        <div class="result-card reveal">
-          <div class="result-num">98%</div>
-          <div class="result-label">Клиентов довольны результатом</div>
-        </div>
-        <div class="result-card reveal">
-          <div class="result-num">15+</div>
-          <div class="result-label">Лет безупречной работы</div>
-        </div>
-        <div class="result-card reveal">
-          <div class="result-num">50+</div>
-          <div class="result-label">Видов косметологических процедур</div>
-        </div>
-        <div class="result-card reveal">
-          <div class="result-num">24/7</div>
-          <div class="result-label">Онлайн-запись через мессенджеры</div>
-        </div>
-      </div>
-
-      <div class="testimonial reveal">
-        <blockquote>
-          «После курса RF-лифтинга INDIBA кожа стала заметно более упругой и подтянутой. Результат превзошёл все ожидания — выгляжу на 10 лет моложе!»
-        </blockquote>
-        <div class="testimonial-author">
-          <span class="t-name">Елена К.</span>
-          <span class="t-role">Постоянный клиент, Пятигорск</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========= PROMO ========= -->
-  <section class="page" id="promo" data-index="4">
-    <div class="page-inner">
-      <div class="badge reveal">Специальные предложения</div>
-      <h2 class="section-title reveal">Актуальные<br><span class="gradient-text">акции и программы</span></h2>
-      <p class="section-desc reveal">Выгодные предложения на самые популярные процедуры — успейте записаться!</p>
-
-      <div class="promo-grid">
-        <div class="promo-card promo-featured reveal">
-          <div class="promo-tag">🔥 Хит</div>
-          <h3>Май красоты</h3>
-          <p>Лифтинг, похудение и уход с выгодой до <strong>-25%</strong>! Весь май действуют специальные цены на комплексные программы.</p>
-          <a href="tel:+79011478213" class="btn btn-primary btn-sm">Записаться</a>
-        </div>
-        <div class="promo-card reveal">
-          <div class="promo-tag">⚡ Новинка</div>
-          <h3>Сочетанные протоколы</h3>
-          <p>Уникальные комбинированные программы для максимального эффекта омоложения и лифтинга.</p>
-        </div>
-        <div class="promo-card reveal">
-          <div class="promo-tag">💰 Выгода</div>
-          <h3>Лазерная эпиляция</h3>
-          <p>Александритовая лазерная эпиляция — пакет «Всё тело» за <strong>9 555 ₽</strong>.</p>
-        </div>
-        <div class="promo-card reveal">
-          <div class="promo-tag">⭐ -20%</div>
-          <h3>SMAS-лифтинг</h3>
-          <p>Безоперационная подтяжка лица ультразвуком со скидкой <strong>20%</strong>.</p>
-        </div>
-        <div class="promo-card reveal">
-          <div class="promo-tag">🎁</div>
-          <h3>Подарочные сертификаты</h3>
-          <p>Идеальный подарок — сертификат на любую процедуру или комплексную программу.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========= CONTACT ========= -->
-  <section class="page" id="contact" data-index="5">
-    <div class="page-inner">
-      <div class="badge reveal">Запись на приём</div>
-      <h2 class="section-title reveal">Начните путь к<br><span class="gradient-text">идеальной коже</span></h2>
-      <p class="section-desc reveal">Запишитесь на бесплатную консультацию — наши специалисты подберут индивидуальную программу.</p>
-
-      <div class="contact-grid">
-        <form class="contact-form reveal" id="contactForm" onsubmit="return false;">
-          <input type="text" placeholder="Ваше имя" required>
-          <input type="tel" placeholder="Телефон / WhatsApp" required>
-          <select>
-            <option value="">Интересующая процедура</option>
-            <option>Аппаратная косметология</option>
-            <option>Инъекционные методы</option>
-            <option>Лазерные процедуры</option>
-            <option>Эпиляция</option>
-            <option>SPA и массажи</option>
-            <option>Консультация специалиста</option>
-          </select>
-          <button type="submit" class="btn btn-primary">Записаться на консультацию →</button>
-        </form>
-
-        <div class="contact-info reveal">
-          <div class="info-item">
-            <span class="info-icon">📍</span>
-            <div>
-              <strong>Адрес</strong>
-              <p>г. Пятигорск, центр города</p>
+          <div class="services-grid">
+            <div class="service-card reveal-3d">
+              <div class="card-icon">💎</div>
+              <h3>Аппаратная косметология</h3>
+              <p>SMAS-лифтинг, RF-лифтинг INDIBA, микроигольчатый RF, фотоомоложение и лазерное омоложение RecoSMA.</p>
+            </div>
+            <div class="service-card reveal-3d">
+              <div class="card-icon">💉</div>
+              <h3>Инъекционные методы</h3>
+              <p>Ботулотоксин, контурная пластика, биоревитализация, плазмолифтинг, мезотерапия и PRP-терапия.</p>
+            </div>
+            <div class="service-card reveal-3d">
+              <div class="card-icon">✨</div>
+              <h3>Лазер LinLine</h3>
+              <p>Лазерное омоложение, наноперфорация, карбоновый пилинг, удаление рубцов и пигментации.</p>
+            </div>
+            <div class="service-card reveal-3d">
+              <div class="card-icon">🧖‍♀️</div>
+              <h3>SPA и массажи</h3>
+              <p>Структурный массаж лица, LPG-массаж тела, программы сезонного ухода Sothys.</p>
+            </div>
+            <div class="service-card reveal-3d">
+              <div class="card-icon">🔬</div>
+              <h3>Лаборатория и диагностика</h3>
+              <p>Генетическое тестирование MyExpert, дерматоскопия, «Паспорт красоты», УЗ-диагностика.</p>
+            </div>
+            <div class="service-card reveal-3d">
+              <div class="card-icon">⚡</div>
+              <h3>Эпиляция</h3>
+              <p>Александритовая лазерная эпиляция, фотоэпиляция и биоэпиляция — для женщин и мужчин.</p>
             </div>
           </div>
-          <div class="info-item">
-            <span class="info-icon">📞</span>
-            <div>
-              <strong>Телефон</strong>
-              <p><a href="tel:+79011478213">+7 (901) 147-82-13</a></p>
-              <p><a href="tel:+79383442030">+7 (938) 344-20-30</a></p>
+        </div>
+      </section>
+
+      <!-- ========= TECHNOLOGY ========= -->
+      <section class="page" data-index="2" id="tech">
+        <div class="page-inner">
+          <div class="badge reveal-3d">Оборудование</div>
+          <h2 class="section-title reveal-3d">Технологии,<br><span class="gradient-text">которым доверяют</span></h2>
+          <p class="section-desc reveal-3d">Мы используем только сертифицированное европейское оборудование с доказанной эффективностью.</p>
+
+          <div class="tech-showcase">
+            <div class="tech-item reveal-3d">
+              <div class="tech-ring"><span>INDIBA</span></div>
+              <h4>RF-лифтинг INDIBA</h4>
+              <p>Радиочастотное омоложение из Испании — безоперационный лифтинг для лица и тела</p>
+            </div>
+            <div class="tech-item reveal-3d">
+              <div class="tech-ring"><span>LinLine</span></div>
+              <h4>Лазер LinLine</h4>
+              <p>Многозадачная лазерная платформа: омоложение, наноперфорация, карбоновый пилинг</p>
+            </div>
+            <div class="tech-item reveal-3d">
+              <div class="tech-ring"><span>SMAS</span></div>
+              <h4>SMAS-лифтинг</h4>
+              <p>Ультразвуковой лифтинг глубоких слоёв кожи без хирургического вмешательства</p>
+            </div>
+            <div class="tech-item reveal-3d">
+              <div class="tech-ring"><span>Jet&nbsp;Peel</span></div>
+              <h4>Газожидкостный пилинг</h4>
+              <p>Безинъекционная мезотерапия и глубокое очищение кожи</p>
             </div>
           </div>
-          <div class="info-item">
-            <span class="info-icon">💬</span>
-            <div>
-              <strong>Мессенджеры</strong>
-              <div class="social-links">
-                <a href="https://wa.me/79383442030" target="_blank" class="social-btn">WhatsApp</a>
-                <a href="https://t.me/europaclinic_bot" target="_blank" class="social-btn">Telegram</a>
-                <a href="https://vk.com/europaclinic" target="_blank" class="social-btn">VK</a>
+
+          <div class="tech-features">
+            <div class="tf reveal-3d"><span class="tf-icon">🏥</span><span>Медицинская лицензия</span></div>
+            <div class="tf reveal-3d"><span class="tf-icon">🇪🇺</span><span>Европейское оборудование</span></div>
+            <div class="tf reveal-3d"><span class="tf-icon">👩‍⚕️</span><span>Сертифицированные врачи</span></div>
+            <div class="tf reveal-3d"><span class="tf-icon">🔒</span><span>Безопасность и стерильность</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= RESULTS ========= -->
+      <section class="page" data-index="3" id="results">
+        <div class="page-inner">
+          <div class="badge reveal-3d">Доверие клиентов</div>
+          <h2 class="section-title reveal-3d">Результаты,<br><span class="gradient-text">которые говорят сами</span></h2>
+          <p class="section-desc reveal-3d">Каждая процедура — это инвестиция в вашу красоту с измеримым результатом.</p>
+
+          <div class="results-grid">
+            <div class="result-card reveal-3d">
+              <div class="result-num counter" data-target="98">0</div>
+              <div class="result-suffix">%</div>
+              <div class="result-label">Клиентов довольны результатом</div>
+            </div>
+            <div class="result-card reveal-3d">
+              <div class="result-num counter" data-target="15">0</div>
+              <div class="result-suffix">+</div>
+              <div class="result-label">Лет безупречной работы</div>
+            </div>
+            <div class="result-card reveal-3d">
+              <div class="result-num counter" data-target="50">0</div>
+              <div class="result-suffix">+</div>
+              <div class="result-label">Видов косметологических процедур</div>
+            </div>
+            <div class="result-card reveal-3d">
+              <div class="result-num">24/7</div>
+              <div class="result-label">Онлайн-запись через мессенджеры</div>
+            </div>
+          </div>
+
+          <div class="testimonial reveal-3d">
+            <blockquote>
+              «После курса RF-лифтинга INDIBA кожа стала заметно более упругой и подтянутой. Результат превзошёл все ожидания — выгляжу на 10 лет моложе!»
+            </blockquote>
+            <div class="testimonial-author">
+              <span class="t-name">Елена К.</span>
+              <span class="t-role">Постоянный клиент, Пятигорск</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= PROMO ========= -->
+      <section class="page" data-index="4" id="promo">
+        <div class="page-inner">
+          <div class="badge reveal-3d">Специальные предложения</div>
+          <h2 class="section-title reveal-3d">Актуальные<br><span class="gradient-text">акции и программы</span></h2>
+          <p class="section-desc reveal-3d">Выгодные предложения на самые популярные процедуры — успейте записаться!</p>
+
+          <div class="promo-grid">
+            <div class="promo-card promo-featured reveal-3d">
+              <div class="promo-tag">🔥 Хит</div>
+              <h3>Май красоты</h3>
+              <p>Лифтинг, похудение и уход с выгодой до <strong>-25%</strong>! Весь май действуют специальные цены на комплексные программы.</p>
+              <a href="tel:+79011478213" class="btn btn-primary btn-sm">Записаться</a>
+            </div>
+            <div class="promo-card reveal-3d">
+              <div class="promo-tag">⚡ Новинка</div>
+              <h3>Сочетанные протоколы</h3>
+              <p>Уникальные комбинированные программы для максимального эффекта омоложения и лифтинга.</p>
+            </div>
+            <div class="promo-card reveal-3d">
+              <div class="promo-tag">💰 Выгода</div>
+              <h3>Лазерная эпиляция</h3>
+              <p>Александритовая лазерная эпиляция — пакет «Всё тело» за <strong>9 555 ₽</strong>.</p>
+            </div>
+            <div class="promo-card reveal-3d">
+              <div class="promo-tag">⭐ -20%</div>
+              <h3>SMAS-лифтинг</h3>
+              <p>Безоперационная подтяжка лица ультразвуком со скидкой <strong>20%</strong>.</p>
+            </div>
+            <div class="promo-card reveal-3d">
+              <div class="promo-tag">🎁</div>
+              <h3>Подарочные сертификаты</h3>
+              <p>Идеальный подарок — сертификат на любую процедуру или комплексную программу.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========= CONTACT ========= -->
+      <section class="page" data-index="5" id="contact">
+        <div class="page-inner">
+          <div class="badge reveal-3d">Запись на приём</div>
+          <h2 class="section-title reveal-3d">Начните путь к<br><span class="gradient-text">идеальной коже</span></h2>
+          <p class="section-desc reveal-3d">Запишитесь на бесплатную консультацию — наши специалисты подберут индивидуальную программу.</p>
+
+          <div class="contact-grid">
+            <form class="contact-form reveal-3d" id="contactForm" onsubmit="return false;">
+              <input type="text" id="formName" placeholder="Ваше имя" required>
+              <input type="tel" id="formPhone" placeholder="Телефон / WhatsApp" required>
+              <select id="formService">
+                <option value="">Интересующая процедура</option>
+                <option>Аппаратная косметология</option>
+                <option>Инъекционные методы</option>
+                <option>Лазерные процедуры</option>
+                <option>Эпиляция</option>
+                <option>SPA и массажи</option>
+                <option>Консультация специалиста</option>
+              </select>
+              <button type="submit" class="btn btn-primary" id="submitBtn">
+                <span id="submitText">Записаться на консультацию →</span>
+              </button>
+            </form>
+
+            <div class="contact-info reveal-3d">
+              <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div>
+                  <strong>Адрес</strong>
+                  <p>г. Пятигорск, центр города</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div>
+                  <strong>Телефон</strong>
+                  <p><a href="tel:+79011478213">+7 (901) 147-82-13</a></p>
+                  <p><a href="tel:+79383442030">+7 (938) 344-20-30</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">💬</span>
+                <div>
+                  <strong>Мессенджеры</strong>
+                  <div class="social-links">
+                    <a href="https://wa.me/79383442030" target="_blank" class="social-btn">WhatsApp</a>
+                    <a href="https://t.me/europaclinic_bot" target="_blank" class="social-btn">Telegram</a>
+                    <a href="https://vk.com/europaclinic" target="_blank" class="social-btn">VK</a>
+                  </div>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">🕐</span>
+                <div>
+                  <strong>Время работы</strong>
+                  <p>Пн–Сб: 9:00 – 20:00</p>
+                  <p>Вс: выходной</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="info-item">
-            <span class="info-icon">🕐</span>
-            <div>
-              <strong>Время работы</strong>
-              <p>Пн–Сб: 9:00 – 20:00</p>
-              <p>Вс: выходной</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <footer class="footer">
-      <p>© 2026 Европейская Косметологическая Клиника — Пятигорск</p>
-    </footer>
-  </section>
+        <footer class="footer">
+          <p>© 2026 Европейская Косметологическая Клиника — Пятигорск</p>
+        </footer>
+      </section>
+
+    </div><!-- /.stage -->
+  </div><!-- /#ui-layer -->
+
+  <!-- ========= CURSOR GLOW ========= -->
+  <div class="cursor-glow" id="cursorGlow"></div>
 
   <script src="app.js"></script>
 </body>
