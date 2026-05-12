@@ -245,6 +245,7 @@ a:hover { color: var(--gold-light); }
 }
 
 /* ======== NAV SCRIM + DRAWER ======== */
+.nav-scrim[hidden], .nav-drawer[hidden] { display: none !important; }
 .nav-scrim {
   position: fixed;
   inset: 0;
