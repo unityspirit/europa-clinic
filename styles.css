@@ -14,7 +14,7 @@
   --accent: #c9a96e;
   --accent2: #d4849a;
   --accent3: #5bbfb5;
-  --card-bg: rgba(0, 0, 0, 0.80);
+  --card-bg: rgba(0, 0, 0, 0.50);
   --card-border: #c9a96e;
   --glass: rgba(0, 0, 0, 0.30);
   --ts:
@@ -168,7 +168,7 @@ a:hover { color: var(--gold-light); }
   width: calc(100% - 48px);
   max-width: 1200px;
   z-index: 1000;
-  background: rgba(10, 10, 20, 0.8);
+  background: rgba(10, 10, 20, 0.5);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(201, 169, 110, 0.2);
